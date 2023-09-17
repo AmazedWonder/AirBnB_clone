@@ -17,7 +17,8 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-        """A method that returns all objects stored in the __objects dictionary"""
+        """A method that returns all objects
+        stored in the __objects dictionary"""
         return FileStorage.__objects
 
     def new(self, obj):
@@ -33,7 +34,8 @@ class FileStorage:
            dictionary to the JSON file specified by __file_path.
         """
         with open(FileStorage.__file_path, 'w', encoding='utf-8') as file:
-            dic = {key: val.to_dict() for key, val in FileStorage.__objects.items()}
+            dic = {key: val.to_dict() for key,
+                   val in FileStorage.__objects.items()}
             json.dump(dic, file)
 
     def classes(self):
@@ -77,10 +79,14 @@ class FileStorage:
             print(f"Error loading JSON file: {str(e)}")
 
     def attributes(self):
-        """ returns a dictionary of valid attributes and their types for each class.
-            The attributes include id, created_at, and updated_at for BaseModel;
-            email, password, first_name, and last_name for User; name for State,
-            City, and Amenity; and specific attributes for Place and Review.
+        """ returns a dictionary of valid
+        attributes and their types for each class.
+            The attributes include id, created_at,
+            and updated_at for BaseModel;
+            email, password, first_name, and
+            last_name for User; name for State,
+            City, and Amenity; and specific
+            attributes for Place and Review.
         """
         attributes = {
             "BaseModel": {
