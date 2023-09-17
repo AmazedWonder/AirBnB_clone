@@ -13,7 +13,8 @@ class BaseModel:
                 if key == "__class__":
                     continue
                 if key in ["created_at", "updated_at"]:
-                    value = datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    value = datetime.datetime.strptime(value,
+                                                       "%Y-%m-%dT%H:%M:%S.%f")
                 setattr(self, key, value)
 
         else:
@@ -55,8 +56,9 @@ class BaseModel:
                                       self.id, self.__dict__))
 
 
-# # Specify the actual path to your JSON file
-#     file_path = 'C:/Users/hp/PycharmProjects/pythonProject/AirBnB/models/file.json'
+#     Specify the actual path to your JSON file
+#     file_path = 'C:/Users/hp/PycharmProjects
+#      /pythonProject/AirBnB/models/file.json'
 #
 #     # Open the JSON file in read mode using a file object
 #     with open(file_path, 'r') as file:
