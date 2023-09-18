@@ -3,10 +3,12 @@
 from models import storage
 import uuid
 import datetime
-# import json
 
 
 class BaseModel:
+    """
+    Base Model Class
+    """
     def __init__(self, *args, **kwargs):
         if kwargs:
             for key, value in kwargs.items():
@@ -24,9 +26,15 @@ class BaseModel:
             storage.new(self)
 
     def update_time(self):
+        """
+        update time
+        """
         self.updated_at = datetime.datetime.now()
 
     def save(self):
+        """
+        save files in json
+        """
         self.update_time()
         storage.save()
 
@@ -43,6 +51,9 @@ class BaseModel:
         return dict_obj
 
     def __str__(self):
+        """
+        string representation
+        """
         class_name = self.__class__.__name__
         id_obj = self.id
         dict_obj = str(self.__dict__)
@@ -50,21 +61,7 @@ class BaseModel:
 
     def __repr__(self):
         """
-            Return string representation of BaseModel class
+        Return string representation of BaseModel class
         """
         return ("[{}] ({}) {}".format(self.__class__.__name__,
                                       self.id, self.__dict__))
-
-
-#     Specify the actual path to your JSON file
-#     file_path = 'C:/Users/hp/PycharmProjects
-#      /pythonProject/AirBnB/models/file.json'
-#
-#     # Open the JSON file in read mode using a file object
-#     with open(file_path, 'r') as file:
-#         # Use the file object to load the JSON datar
-#         data = json.load(file)
-#
-#     # Now you can work with the loaded JSON data
-#     # For example, print the contents of the JSON file
-#     print(data)

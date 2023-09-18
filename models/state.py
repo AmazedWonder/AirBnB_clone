@@ -3,10 +3,8 @@
 from models.base_model import BaseModel
 
 
-# class State(BaseModel):
-#     name = ""
-
 class State(BaseModel):
-    def __init__(self):
-        super().__init__()
-        self.name = ""
+    """
+    State class
+    """
+    name = ""

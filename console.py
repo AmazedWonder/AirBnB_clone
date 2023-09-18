@@ -12,21 +12,39 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def do_EOF(self, line):
+        """
+        End file
+        """
         return True
 
     def do_quit(self, line):
+        """
+        quit the console
+        """
         return True
 
     def help_quit(self):
+        """
+        exit the program
+        """
         print("Quit command to exit the program")
 
     def help_EOF(self):
+        """
+        exit with control D
+        """
         print("Exit the program (Ctrl+D)")
 
     def emptyline(self):
+        """
+        Empty line on console
+        """
         pass
 
     def do_create(self, arg):
+        """
+        creating a class or instances
+        """
         if arg == "" or arg is None:
             print("** class name missing **")
         elif arg not in storage.classes():
@@ -37,6 +55,9 @@ class HBNBCommand(cmd.Cmd):
             print(instnce.id)
 
     def do_show(self, arg):
+        """
+        show all the classes and instances
+        """
         if arg is None or arg == "":
             print("** class name missing **")
         else:
@@ -53,6 +74,9 @@ class HBNBCommand(cmd.Cmd):
                     print(storage.all()[k])
 
     def do_destroy(self, arg):
+        """
+        destroying classes and instances when created
+        """
         if arg is None or arg == "":
             print("** class name missing **")
         else:
@@ -92,6 +116,9 @@ class HBNBCommand(cmd.Cmd):
                 storage.all()[key].save()
 
     def do_all(self, arg):
+        """
+        show all the classes in json file
+        """
         if arg:
             arguments = arg.split(' ')
             if not arguments or arguments[0] not in storage.classes():
@@ -105,6 +132,9 @@ class HBNBCommand(cmd.Cmd):
             print(obj_new_list)
 
     def do_update(self, arg):
+        """
+        Updating the files in json
+        """
         if arg is None or arg == "":
             print("** class name missing **")
             return
