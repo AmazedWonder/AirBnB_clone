@@ -45,9 +45,9 @@ class BaseModel:
         object from dictionary by checking class key
         """
         dict_obj = self.__dict__.copy()
-        dict_obj['__class__'] = self.__class__.__name__
         dict_obj['created_at'] = self.created_at.isoformat()
         dict_obj['updated_at'] = self.updated_at.isoformat()
+        dict_obj['__class__'] = self.__class__.__name__
         return dict_obj
 
     def __str__(self):
