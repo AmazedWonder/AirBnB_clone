@@ -26,7 +26,7 @@ class FileStorage:
            The object is stored with a key that combines the object's class
            name and its ID.
         """
-        key = f"{obj.__class__.__name__}.{obj.id}"
+        key = "{}.{}".format(type(obj).__name__, obj.id)
         FileStorage.__objects[key] = obj
 
     def save(self):

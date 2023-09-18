@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Base module"""
 
 from models import storage
 import uuid
