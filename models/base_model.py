@@ -51,20 +51,21 @@ class BaseModel:
         """
         dict_obj = self.__dict__.copy()
         dict_obj['__class__'] = self.__class__.__name__
-        dict_obj['created_at'] = self.created_at.isoformat()
-        dict_obj['updated_at'] = self.updated_at.isoformat()
-        return dict_obj
+        dict_obj['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        dict_obj['updated_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        sorted_dict = dict(sorted(dict_obj.items()))
+        return sorted_dict
 
     def __str__(self):
-        """
+        """Returns the string representation of BaseModel instance."""
+        dict_obj = self.to_dict()
+        dict_obj['created_at'] = self.created_at.isoformat()
+        dict_obj['updated_at'] = self.updated_at.isoformat()
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                                     self.id, dict_obj)
+    """
+    def __str__(self):
         string representation
-        """
         return "[{}] ({}) {}".\
             format(type(self).__name__, self.id, self.__dict__)
-
-    def __repr__(self):
-        """
-        Return string representation of BaseModel class
-        """
-        return ("[{}] ({}) {}".format(self.__class__.__name__,
-                                      self.id, self.__dict__))
+    """
