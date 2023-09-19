@@ -88,8 +88,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class does't exist **")
         else:
             matc = [
-                i for i in storage.all() if i.startwith(
-                    arg[0] + '.')]
+                i for i in storage.all() if i.startswith(
+                    arguments[0] + '.')]
             print(len(matc))
 
     def do_show(self, arg):
