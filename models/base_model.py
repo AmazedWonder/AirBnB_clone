@@ -13,8 +13,12 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         if kwargs:
             for key, value in kwargs.items():
-                if key == "__class__":
-                    continue
+                if key == "created_at":
+                    self.__dict__["created_at"] = date.strptime(
+                             kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
+                elif key == "updated_at":
+                    self.__dict__["updated_at"] = date.strptime(
+                            kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
                 if key in ["created_at", "updated_at"]:
                     value = datetime.datetime.strptime(value,
                                                        "%Y-%m-%dT%H:%M:%S.%f")
@@ -46,19 +50,17 @@ class BaseModel:
         object from dictionary by checking class key
         """
         dict_obj = self.__dict__.copy()
+        dict_obj['__class__'] = self.__class__.__name__
         dict_obj['created_at'] = self.created_at.isoformat()
         dict_obj['updated_at'] = self.updated_at.isoformat()
-        dict_obj['__class__'] = self.__class__.__name__
         return dict_obj
 
     def __str__(self):
         """
         string representation
         """
-        class_name = self.__class__.__name__
-        id_obj = self.id
-        dict_obj = str(self.__dict__)
-        return f"[{class_name}] ({id_obj}) {dict_obj} "
+        return "[{}] ({}) {}".\
+            format(type(self).__name__, self.id, self.__dict__)
 
     def __repr__(self):
         """
