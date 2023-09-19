@@ -120,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
             elif len(arguments) < 2:
                 print("** instance id missing **")
             else:
-                k = f"{arguments[0]}, {arguments[1]}"
+                k = f"{arguments[0]}.{arguments[1]}"
                 if k not in storage.all():
                     print("** no instance found **")
                 else:
