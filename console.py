@@ -39,12 +39,12 @@ class HBNBCommand(cmd.Cmd):
             if m_dict:
                 self.update_dict(class_name, uid, m_dict.group(1))
                 return ""
-            attr_value = re.serch(
+            attr_andvalue = re.serch(
                     '^(?:"([^"]*)")?(?:, (.*))?$', attr_or_dict)
-            if attr_value:
-                attr_and_value = (attr_value.group(1) or "") + " "
-                + (attr_value.group(2) or "")
-        cmnd = function + " " + class_name + " " + uid + " " + attr_and_value
+            if attr_andvalue:
+                attr_value = (attr_andvalue.group(1) or "") + " "
+                + (attr_andvalue.group(2) or "")
+        cmnd = function + " " + class_name + " " + uid + " " + attr_value
         self.onecmd(cmnd)
         return cmnd
 
