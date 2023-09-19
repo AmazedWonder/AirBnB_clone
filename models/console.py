@@ -90,7 +90,7 @@ class HBNBCommand(cmd.Cmd):
             matc = [
                 i for i in storage.all() if i.startwith(
                     arg[0] + '.')]
-            print(len(matc))
+            print(len(matc)
 
     def do_show(self, arg):
         """show all the classes and instances"""
