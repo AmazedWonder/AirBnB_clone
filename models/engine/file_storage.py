@@ -65,18 +65,15 @@ class FileStorage:
         """
         if not os.path.isfile(FileStorage.__file_path):
             return
-        try:
-            with open(FileStorage.__file_path, 'r', encoding='utf8') as file:
-                file_content = file.read()
-                if not file_content:
-                    loaded_objects = {}
-                else:
-                    loaded_objects = json.load(file_content)
-            loaded_objects = {key: self.classes()[val["__class__"]](**val)
-                              for key, val in loaded_objects.items()}
+        with open(FileStorage.__file_path, 'r', encoding='utf8') as f:
+            try:
+                loaded_objects = json.load(f)
+            except json.JSONDecodeError:
+                loaded_objects = {}
+            loaded_objects = {
+                    key: self.classes()[val["__class__"]](**val)
+                    for key, val in loaded_objects.items()}
             FileStorage.__objects = loaded_objects
-        except Exception as e:
-            print(f"Error loading JSON file: {str(e)}")
 
     def attributes(self):
         """ returns a dictionary of valid
