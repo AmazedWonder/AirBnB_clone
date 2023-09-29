@@ -235,26 +235,44 @@ HTML page that displays a header, footer and a filters box with a search button.
 
 5. More filters
 
-Write an HTML page that displays a header, footer and a filters box.
+HTML page that displays a header, footer and a filters box.
 
 Layout: (based on 4-index.html)
 
 6. It's (h)over
 
-Write an HTML page that displays a header, footer and a filters box with dropdown.
+HTML page that displays a header, footer and a filters box with dropdown.
 
 Layout: (based on 5-index.html)
 
 7. Display results
 
-Write an HTML page that displays a header, footer, a filters box with dropdown and results.
+HTML page that displays a header, footer, a filters box with dropdown and results.
 
 Layout: (based on 6-index.html)
 
 8. More details
 
-Write an HTML page that displays a header, a footer, a filter box (dropdown list) and the result of the search.
+HTML page that displays a header, a footer, a filter box (dropdown list) and the result of the search.
 
 Layout: (based on 7-index.html)
 
+9. Full details
 
+HTML page that displays a header, footer, a filters box with dropdown and results.
+
+Layout: (based on 8-index.html)
+
+Added more information to a Place article
+
+10. Flex
+
+Improved the Places section by using Flexible boxes for all Place articles
+
+11. Responsive design
+
+Improved the page by adding responsive design to display correctly in mobile or small screens.
+
+12. Accessibility
+
+Improved the page by adding Accessibility support
